@@ -1,0 +1,552 @@
+:root {
+  --primary: #b6895b;
+  --bg: #010101;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "poppins", sans-serif;
+  background-color: var(--bg);
+  color: #fff;
+  min-height: 4000px;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 7%;
+  background-color: rgba(1, 1, 1, 0.8);
+  border-bottom: 1px solid #513c28;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+/* Bagian logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* jarak antara logo dan teks */
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Teks “Capstone Coffee” */
+.navbar .navbar-logo a {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.navbar .navbar-logo a span {
+  color: var(--primary);
+}
+
+/* Menu navigasi */
+.navbar-nav {
+  display: flex;
+  gap: 5rem;
+}
+
+.navbar-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a::after {
+  content: " ";
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--primary);
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar-nav a:hover::after {
+  transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a {
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--primary);
+}
+
+/* Default */
+.navbar-extra {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(1, 1, 1, 0.9);
+    width: 200px;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .navbar .navbar-nav.active {
+    display: flex;
+  }
+
+  .navbar-extra {
+    display: block;
+  }
+  #hamburger-menu {
+    font-size: 2rem;
+    color: #fff;
+  }
+  .navbar .navbar-nav a {
+    padding: 0.5rem 0;
+    text-align: right;
+  }
+}
+
+/* ===================== HERO SECTION ===================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../img/coffee-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgb(1, 1, 3, 1) 8%,
+    rgb(255, 255, 255, 0) 50%
+  );
+}
+
+.hero .content {
+  padding: 1.4rem 7%;
+  max-width: 60rem;
+}
+
+.hero .content h1 {
+  font-size: 5em;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgb(1, 1, 3, 0.5);
+  line-height: 1.2;
+}
+
+.hero .content h1 span {
+  color: var(--primary);
+}
+
+.hero .content p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 100;
+  text-shadow: 1px 1px 3px rgb(1, 1, 3, 0.5);
+  mix-blend-mode: difference;
+}
+
+.hero .content .cta {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px rgb(1, 1, 3, 0.5);
+  position: relative;
+  z-index: 10;
+}
+
+.hero .content .cta:first-of-type {
+  margin-right: 1.5rem;
+}
+
+/* ===================== ABOUT SECTION ===================== */
+.about,
+.menu {
+  padding-top: 10rem;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-bottom: 1.4rem;
+}
+
+.about h2,
+.menu h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+}
+.about h2 span,
+.menu h2 span {
+  color: var(--primary);
+}
+
+.about .row {
+  display: flex;
+}
+
+.about .row-img {
+  flex: 1 1 45rem;
+}
+
+.about .row-img img {
+  width: 100%;
+}
+
+.about .row .content {
+  flex: 1 1 35rem;
+  padding: 0 1rem;
+}
+
+.about .row .content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.about .row .content p {
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 100;
+  line-height: 1.6;
+}
+
+/* ===================== MENU SECTION ===================== */
+.menu {
+  text-align: center;
+  color: #fff;
+  background-color: #010101;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.menu h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.menu h2 span {
+  color: #b6895b;
+}
+
+.menu p {
+  max-width: 35rem;
+  margin: 0 auto 3rem;
+  font-weight: 100;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Menu Grid */
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Menu Card */
+.menu-card {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
+}
+
+.menu-card-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.menu-card-title {
+  font-size: 1.2rem;
+  color: #b6895b;
+  margin-bottom: 0.5rem;
+}
+
+.menu-card-desc {
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.menu-card-price {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ===================== BOOK SECTION ===================== */
+.book {
+  padding: 8rem 7% 5rem;
+  background-color: var(--bg);
+  color: #fff;
+  text-align: center;
+}
+
+.book h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.book h2 span {
+  color: var(--primary);
+}
+
+.book p {
+  font-size: 1rem;
+  font-weight: 100;
+  max-width: 40rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.book-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.book-form {
+  background: #111;
+  padding: 2rem;
+  border-radius: 1rem;
+  flex: 1 1 320px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.book-form h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.book-form .input-group {
+  margin-bottom: 1rem;
+}
+
+.book-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.book-form input,
+.book-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #222;
+  color: #fff;
+}
+
+.book-form .btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+}
+
+.book-form .btn:hover {
+  background: #a3764f;
+}
+
+.info-section {
+  flex: 1 1 320px;
+  max-width: 400px;
+}
+
+.info-section h3 {
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+}
+
+.hours ul {
+  list-style: none;
+  padding: 0;
+}
+
+.hours li {
+  margin-bottom: 0.5rem;
+  font-weight: 100;
+}
+
+.hours span {
+  color: var(--primary);
+}
+
+.info-section .map {
+  margin-bottom: 3rem;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+
+  .about .row {
+    flex-wrap: wrap;
+  }
+
+  .about .row .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about .row .content {
+    padding: 0;
+  }
+
+  .about .row .content h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .book-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+
+  .about .row {
+    flex-direction: column;
+  }
+
+  .about .row-img,
+  .about .row .content {
+    flex: 1 1 100%;
+    padding: 0;
+  }
+
+  .hero .content h1 {
+    font-size: 3rem;
+  }
+
+  .menu {
+    padding: 3rem 1rem;
+  }
+
+  .menu-card {
+    max-width: 90%;
+  }
+
+  .menu-card-img {
+    width: 80%;
+  }
+}
