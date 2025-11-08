@@ -1,6 +1,6 @@
-// public/js/script.js
+
 (() => {
-  // NAV
+
   const navbarNav = document.querySelector(".navbar-nav");
   const hamburger = document.querySelector("#hamburger-menu");
   if (hamburger && navbarNav) {
@@ -10,7 +10,7 @@
     });
   }
 
-  // KERANJANG
+
   let cart = {};
   let total = 0;
 
@@ -81,9 +81,9 @@
 
   window.clearCart = () => { cart = {}; updateCart(); };
 
-  // Attach add-to-cart buttons
+
   document.addEventListener("DOMContentLoaded", () => {
-    // add buttons (if page had them)
+
     document.querySelectorAll(".btn-order").forEach(button => {
       button.addEventListener("click", (e) => {
         const item = e.currentTarget.getAttribute("data-item");
@@ -91,13 +91,13 @@
       });
     });
 
-    // inputs
+
     const tableInput = document.getElementById("table-number");
     const nameInput = document.getElementById("order-name");
     if (tableInput) tableInput.addEventListener("input", checkFormValidity);
     if (nameInput) nameInput.addEventListener("input", checkFormValidity);
 
-    // form submit
+
     const form = document.getElementById("checkout-form");
     if (form) {
       form.addEventListener("submit", async (e) => {
@@ -107,7 +107,7 @@
           return;
         }
 
-        // transform cart -> items array [{name, qty}]
+
     const itemsArray = Object.entries(cart).map(([item_name, quantity]) => ({ 
         item_name,
         quantity,
@@ -123,7 +123,7 @@
           total_amount: total,
         };
 
-        // debug log sebelum kirim
+ 
         console.log('ORDER SEND:', dataToSend);
 
         try {
@@ -144,8 +144,7 @@
             clearCart();
             form.reset();
             checkFormValidity();
-            // redirect ke halaman success optional:
-            // window.location.href = `/order/success/${result.order_id}`;
+            
           } else {
             alert('Gagal memproses pesanan: ' + (result.message || 'Error server tidak diketahui.'));
           }

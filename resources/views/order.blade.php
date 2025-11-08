@@ -267,7 +267,7 @@
     }
   });
 </script>
-<script src="{{ asset('js/script.js') }}"></script>
+{{-- <script src="{{ asset('js/script.js') }}"></script> --}}
 
 @include('layouts.footer')
 </body>

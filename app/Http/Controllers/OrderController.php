@@ -10,17 +10,17 @@ class OrderController extends Controller
 {
     public function create()
     {
-        // Pastikan file ini sesuai: resources/views/order.blade.php
+
         return view('order');
     }
 
     public function store(Request $request)
     {
         try {
-            // Ambil data dari fetch() JSON
-            $data = $request->json()->all();
 
-            // 🔍 Validasi data
+            $data = $request->json()->all();
+            
+
             $validated = validator($data, [
                 'customer_name' => 'required|string|max:100',
                 'table_number'  => 'required|string|max:20',
@@ -34,7 +34,7 @@ class OrderController extends Controller
 
             DB::beginTransaction();
 
-            // 💾 Simpan ke tabel orders
+
             $orderId = DB::table('orders')->insertGetId([
                 'customer_name' => $validated['customer_name'],
                 'table_number'  => $validated['table_number'],
@@ -43,7 +43,7 @@ class OrderController extends Controller
                 'updated_at'    => now(),
             ]);
 
-            // 💾 Simpan ke tabel order_items
+
             foreach ($validated['items'] as $item) {
                 DB::table('order_items')->insert([
                     'order_id'   => $orderId,
@@ -58,21 +58,24 @@ class OrderController extends Controller
 
             DB::commit();
 
-            // ✅ Berhasil
+
             return response()->json([
-                'message'  => 'Pesanan berhasil disimpan.',
+                'success'  => true,
                 'order_id' => $orderId,
+                'message'  => 'Pesanan berhasil disimpan!',
             ]);
 
         } catch (ValidationException $e) {
             return response()->json([
+                'success' => false,
                 'message' => 'Validasi gagal.',
-                'errors'  => $e->errors()
+                'errors'  => $e->errors(),
             ], 422);
 
         } catch (\Exception $e) {
-            DB::rollBack();
+             DB::rollBack();
             return response()->json([
+                'success' => false,
                 'message' => 'Terjadi kesalahan saat menyimpan pesanan.',
                 'error'   => $e->getMessage(),
             ], 500);
